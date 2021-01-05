@@ -1,4 +1,9 @@
-# RA_Event-State_filter
+[![Build status](https://ci.appveyor.com/api/projects/status/gxixcx969g503fx3?svg=true)](https://ci.appveyor.com/project/Vadim2107/ra-event-state-filter)
+
+### [GitHub Pages](https://vadim2107.github.io/RA_Event-State_filter/)
+# Домашнее задание к курсу «React: библиотека № 1 в современной фронтенд-разработке»
+
+## RA_Event-State_filter
 
 # Getting Started with Create React App
 

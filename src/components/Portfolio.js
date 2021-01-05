@@ -2,13 +2,12 @@ import React from 'react';
 import '../App.css';
 import ProjectList from './ProjectList.js';
 import Toolbar from './Toolbar.js';
-// import PropTypes from 'prop-types';
-
 class Portfolio extends React.Component {
-    filters = ["All", "Websites", "Flayers", "Business Cards"];
-    selected = "All";
-    onSelectFilter = (filter) => console.log(filter);
-    projects = [{
+  constructor(props) {
+    super(props);
+    this.filters = ["All", "Websites", "Flayers", "Business Cards"];
+    this.selected = "All";    
+    this.projects = [{
       // img: "./img/mon.jpg",
       img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/mon.jpg",
       category: "Business Cards"
@@ -61,17 +60,26 @@ class Portfolio extends React.Component {
       img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/place200x290_3.png",
       category: "Flayers"
     }];
-    state = this.project;
-  
-  render() {
-    // const { filters, selected, onSelectFilter, projects } = this.props;
+    this.state = { value: this.projects };    
+  }
+
+  onSelectFilter = (filter) => {
+    this.selected = filter;
+    if (filter === 'All') {
+      this.setState(() => ({value: this.projects}));
+    } else {
+      this.setState(() => ({value: this.projects.filter(o => o.category === filter)}));
+    }
+  }
+
+  render() {    
     return (
       <div>
         <Toolbar
           filters = {this.filters}
           selected = {this.selected}
           onSelectFilter = {this.onSelectFilter} />    
-        <ProjectList projects = {this.projects} />
+        <ProjectList projects = {this.state.value} />
       </div>
     );
   }
